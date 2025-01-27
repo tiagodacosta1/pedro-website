@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ShortBio from "./ShortBio";
 import DiscoverWork from "./DiscoverWork";
 

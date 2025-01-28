@@ -11,10 +11,7 @@ export default {
       backgroundImage: {
         'custom-image': "url('/hero.png')",
       },
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+  
     },
   },
   plugins: [],

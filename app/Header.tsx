@@ -59,21 +59,8 @@ const Header = () => {
                     ref={menuRef} // Attach the ref to the menu container
                     className="absolute top-32 left-0 right-0 h-[70vh] bg-black text-white flex flex-col sm:flex-row z-40"
                 >
-                    {/* Left Column - Navigation Links */}
-                    <div className="flex-1 flex flex-col justify-center space-y-8 sm:w-1/2">
-                        <Link href="/" className="text-2xl font-semibold uppercase ml-8">
-                            Home
-                            <p className="text-sm italic opacity-70">Welcome to my site</p>
-                        </Link>
-
-                        <Link href="/about" className="text-2xl font-semibold uppercase ml-8">
-                            BIO
-                            <p className="text-sm italic opacity-70">Learn more about Pedro</p>
-                        </Link>
-                    </div>
-
-                    {/* Right Column - Image with Overlay */}
-                    <div className="flex-1 relative sm:w-1/2 sm:flex-row-reverse">
+                    {/* Left Column - Image with Overlay */}
+                    <div className="flex-1 relative sm:w-1/2">
                         <Image
                             src="/hero.png" // Replace with your image path
                             alt="Hero Image"
@@ -86,6 +73,23 @@ const Header = () => {
                             <p className="text-xl font-bold">Event Name Here</p>
                             <p className="text-lg font-medium">London, 2024</p>
                         </div>
+                    </div>
+
+                    {/* Right Column - Navigation Links */}
+                    <div className="flex-1 flex flex-col justify-center space-y-8 sm:w-1/2">
+                        <Link href="/" className="text-2xl font-semibold uppercase ml-8">
+                            Home
+                            <p className="text-sm italic opacity-70">Welcome to my site</p>
+                        </Link>
+
+                        <Link href="/BioAndClients" className="text-2xl font-semibold uppercase ml-8">
+                            BIO
+                            <p className="text-sm italic opacity-70">Learn more about Pedro</p>
+                        </Link>
+                        <Link href="/Contact" className="text-2xl font-semibold uppercase ml-8">
+                            Contact
+                            <p className="text-sm italic opacity-70">Learn more about Pedro</p>
+                        </Link>
                     </div>
                 </div>
             )}

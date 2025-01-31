@@ -1,7 +1,13 @@
+'use client';
+
+import { useState } from "react";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 
 export default function MyMusic() {
+    const [genreDropdownOpen, setGenreDropdownOpen] = useState(false);
+    const [instrumentDropdownOpen, setInstrumentDropdownOpen] = useState(false);
+
     return (
         <div>
             <div
@@ -23,15 +29,39 @@ export default function MyMusic() {
                 {/* Filters */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-6 pb-4">
                     <button className="text-white border-b-2 border-white pb-1 text-center">View All</button>
-                    <button className="text-gray-400 flex items-center justify-center gap-2 text-center">
-                        By Genre or Style <ArrowDown size={16} />
-                    </button>
-                    <button className="text-gray-400 flex items-center justify-center gap-2 text-center">
-                        By Instrument <ArrowDown size={16} />
-                    </button>
+                    <div className="relative text-center">
+                        <button
+                            className="text-gray-400 flex items-center justify-center gap-2 mx-auto"
+                            onClick={() => setGenreDropdownOpen(!genreDropdownOpen)}
+                        >
+                            By Genre or Style <ArrowDown size={16} />
+                        </button>
+                        {genreDropdownOpen && (
+                            <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
+                                {/* Add your genre options here */}
+                                <p className="py-1">Jazz</p>
+                                <p className="py-1">Classical</p>
+                                <p className="py-1">Electronic</p>
+                            </div>
+                        )}
+                    </div>
+                    <div className="relative text-center">
+                        <button
+                            className="text-gray-400 flex items-center justify-center gap-2 mx-auto"
+                            onClick={() => setInstrumentDropdownOpen(!instrumentDropdownOpen)}
+                        >
+                            By Instrument <ArrowDown size={16} />
+                        </button>
+                        {instrumentDropdownOpen && (
+                            <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
+                                {/* Add your instrument options here */}
+                                <p className="py-1">Violin</p>
+                                <p className="py-1">Piano</p>
+                                <p className="py-1">Electric Bass</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
-
-
 
                 {/* Music List */}
                 <div className="mt-12 space-y-12">

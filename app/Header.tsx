@@ -90,6 +90,10 @@ const Header = () => {
                             Contact
                             <p className="text-sm italic opacity-70">Learn more about Pedro</p>
                         </Link>
+                        <Link href="/MyMusic" className="text-2xl font-semibold uppercase ml-8">
+                            My Music
+                            <p className="text-sm italic opacity-70">Learn more about Pedro</p>
+                        </Link>
                     </div>
                 </div>
             )}

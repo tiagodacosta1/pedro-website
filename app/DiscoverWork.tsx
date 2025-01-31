@@ -12,18 +12,18 @@ export default function DiscoverWork() {
       title: "BIO",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        image: "/IMG_8701.JPG", // Updated to a local image
-      },
+      image: "/IMG_8701.JPG", // Updated to a local image
+    },
     {
       title: "MEDIA",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        image: "/IMG_8701.JPG", // Updated to a local image
-      },
+      image: "/IMG_8701.JPG", // Updated to a local image
+    },
   ]
 
   return (
-    <section className=" py-20">
+    <section className="h-[120vh] flex items-center">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">

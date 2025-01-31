@@ -7,8 +7,15 @@ export default function BioAndClients() {
     const clients = Array(8).fill(null);
 
     return (
-        <section className="bg-[#111111] text-white px-4 py-16">
-            <div className="container mx-auto max-w-4xl">
+
+        <div>
+            <div
+                className="h-[60vh] bg-cover bg-center flex justify-center items-center text-white text-center"
+                style={{ backgroundImage: 'url(/hero.png)' }}
+            >
+                <h1>About</h1>
+            </div>
+            <div className="container mx-auto max-w-4xl py-32">
                 {/* Biography Text */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 text-sm leading-relaxed text-gray-400">
                     <p>
@@ -35,7 +42,7 @@ export default function BioAndClients() {
                 </div>
 
                 {/* Profile Image */}
-                <div className="flex justify-center mb-16">
+                <div className="flex justify-center mb-32">
                     <div className="relative w-64 h-80">
                         <Image
                             src="/IMG_8700.JPG"
@@ -50,9 +57,9 @@ export default function BioAndClients() {
                 {/* Previous Clients Section */}
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center gap-4 mb-2">
-                        <div className="w-16 h-[1px] bg-white"></div>
+
                         <h2 className="text-2xl tracking-wide">PREVIOUS CLIENTS</h2>
-                        <div className="w-16 h-[1px] bg-white"></div>
+
                     </div>
                     <p className="text-sm text-gray-400">
                         I have been lucky to work with some wonderful advertising
@@ -63,7 +70,7 @@ export default function BioAndClients() {
 
                 {/* Clients Grid */}
                 <div className="relative max-w-6xl mx-auto px-[1px] py-8">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[1px] gap-y-16">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-16">
                         {clients.map((_, index) => (
                             <div
                                 key={index}
@@ -99,15 +106,10 @@ export default function BioAndClients() {
                         ))}
                     </div>
 
-                    {/* Horizontal divider line */}
-                    <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-[#1A1A1A]" />
 
-                    {/* Vertical divider lines */}
-                    <div className="absolute inset-y-0 left-1/4 w-[1px] bg-[#1A1A1A]" />
-                    <div className="absolute inset-y-0 left-1/2 w-[1px] bg-[#1A1A1A]" />
-                    <div className="absolute inset-y-0 left-3/4 w-[1px] bg-[#1A1A1A]" />
                 </div>
             </div>
-        </section>
+        </div>
+
     );
 }

@@ -9,17 +9,17 @@ export default function Footer() {
     }
 
     return (
-        <footer className="bg-black text-white py-6 px-4 md:px-8">
+        <footer className="text-white py-6 px-4 md:px-8">
             <div className="container mx-auto flex flex-col space-y-4 md:space-y-0 md:flex-row md:items-center md:justify-between text-sm">
                 {/* Copyright - Full width on mobile, normal on desktop */}
-                <div className="text-center md:text-left">© {new Date().getFullYear()} INAME. ALL RIGHTS RESERVED.</div>
+                <h3 className="text-center md:text-left">© {new Date().getFullYear()} INAME. ALL RIGHTS RESERVED.</h3>
 
                 {/* Made by - Full width on mobile, normal on desktop */}
-                <div className="text-center order-last md:order-none">Made by XYZ</div>
+                <h3 className="text-center order-last md:order-none">Made by XYZ</h3>
 
                 {/* Links - Centered on mobile, right-aligned on desktop */}
                 <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-                    <div className="flex items-center space-x-4 md:space-x-6">
+                    <h3 className="flex items-center space-x-4 md:space-x-6">
                         <Link href="/contact" className="hover:opacity-70 transition-opacity">
                             Contact
                         </Link>
@@ -39,7 +39,7 @@ export default function Footer() {
                         >
                             LinkedIn
                         </Link>
-                    </div>
+                    </h3>
                     <button
                         onClick={scrollToTop}
                         className="p-2 border border-white rounded hover:bg-white hover:text-black transition-colors"
@@ -49,7 +49,7 @@ export default function Footer() {
                     </button>
                 </div>
             </div>
-        </footer>
+        </footer >
     )
 }
 

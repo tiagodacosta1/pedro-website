@@ -53,7 +53,7 @@ export default function MyMusic() {
                             By Instrument <ArrowDown size={16} />
                         </button>
                         {instrumentDropdownOpen && (
-                            <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
+                            <div className="absolute left-0 mt-2 text-white w-full py-2 px-4 border border-gray-700 z-50">
                                 {/* Add your instrument options here */}
                                 <p className="py-1">Violin</p>
                                 <p className="py-1">Piano</p>

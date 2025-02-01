@@ -32,7 +32,7 @@ export default function ContactForm() {
                 {/* Left Section */}
                 <div className="md:w-1/2 space-y-6">
                     <h2 className="text-lg uppercase tracking-wide">Get in Touch</h2>
-                    <h1 className="text-4xl md:text-5xl font-serif">Interested in working together?</h1>
+                    <h1 className="text-4xl md:text-5xl">Interested in working together?</h1>
                     <div className="flex items-center space-x-2">
                         <FaMapMarkerAlt />
                         <p>Based in London, available in Europe.</p>

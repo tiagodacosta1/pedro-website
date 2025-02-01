@@ -38,11 +38,13 @@ const Header = () => {
     return (
         <div className="relative" ref={headerRef}>
             <header
-                className={`fixed top-0 left-0 right-0 h-32 bg-transparent flex items-center justify-between border-b border-white z-50 ${menuOpen ? 'bg-[#050807]' : ''}`}
+                className={`fixed top-0 left-0 right-0 h-32 flex items-center justify-between border-b border-white z-50 ${menuOpen ? 'bg-[#050807]' : 'bg-transparent'}`}
             >
                 {/* Name on the left */}
                 <div className="ml-8 text-xl">
-                    Pedro <br /> Finisterra
+                    <Link href="/" className="text-2xl font-semibold uppercase">
+                        Pedro <br /> Finisterra
+                    </Link>
                 </div>
 
                 {/* Menu button on the right */}

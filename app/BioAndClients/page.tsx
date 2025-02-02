@@ -17,7 +17,7 @@ export default function BioAndClients() {
             </div>
             <div className="container mx-auto max-w-4xl py-32">
                 {/* Biography Text */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 text-sm leading-relaxed">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 text-sm leading-relaxed text-gray-400">
                     <p>
                         PEDRO LARANGEIRA FINISTERRA WAS BORN IN LISBON IN 1994. PEDRO LARANGEIRA FINISTERRA BEGAN HIS MUSICAL
                         STUDIES AT THE CONSERVATORY OF MUSIC IN MADEIRA, WITH DISTINCTION IN SECONDARY STUDIES IN MUSICAL THEORY IN
@@ -61,7 +61,7 @@ export default function BioAndClients() {
                         <h2 className="text-2xl tracking-wide">PREVIOUS CLIENTS</h2>
 
                     </div>
-                    <p className="text-sm">
+                    <p className="text-sm text-gray-400">
                         I have been lucky to work with some wonderful advertising
                         <br />
                         arts and documentary teams included in above.

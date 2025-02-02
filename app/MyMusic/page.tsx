@@ -14,7 +14,7 @@ export default function MyMusic() {
                 className="h-[60vh] bg-cover bg-center flex justify-center items-center text-white text-center"
                 style={{ backgroundImage: 'url(/hero.png)' }}
             >
-                <h1>Contact</h1>
+                <h1>My music</h1>
             </div>
             <section className="min-h-screen bg-black text-white px-6 md:px-16 py-12">
                 {/* Header */}

@@ -96,6 +96,10 @@ const Header = () => {
                             My Music
                             <p className="text-sm italic opacity-70">Learn more about Pedro</p>
                         </Link>
+                        <Link href="/Media" className="text-2xl font-semibold uppercase ml-8">
+                            Media
+                            <p className="text-sm italic opacity-70">Learn more about Pedro</p>
+                        </Link>
                     </div>
                 </div>
             )}

@@ -74,7 +74,7 @@ export default function Media() {
             <div className="fixed top-0 left-0 right-0 z-10 h-[60vh]">
                 <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: "url(/hero.png)" }} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <h1 className="text-white text-4xl font-bold">Media</h1>
+                    <h1 className=" text-4xl font-bold">Media</h1>
                 </div>
             </div>
 
@@ -90,7 +90,7 @@ export default function Media() {
 
                     {/* Filters */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-6 pb-4">
-                        <button className="text-white border-b-2 border-white pb-1 text-center">View All</button>
+                        <button className=" border-b-2 border-white pb-1 text-center">View All</button>
                         <div className="relative text-center">
                             <button
                                 className="text-gray-400 flex items-center justify-center gap-2 mx-auto"
@@ -99,7 +99,7 @@ export default function Media() {
                                 By Genre or Style <ArrowDown size={16} />
                             </button>
                             {genreDropdownOpen && (
-                                <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
+                                <div className="absolute left-0 mt-2 bg-black  w-full py-2 px-4 border border-gray-700 z-50">
                                     {/* Add your genre options here */}
                                     <p className="py-1">Compositions</p>
                                     <p className="py-1">Microtonal Improvisations</p>
@@ -116,7 +116,7 @@ export default function Media() {
                                 By Instrument <ArrowDown size={16} />
                             </button>
                             {instrumentDropdownOpen && (
-                                <div className="absolute left-0 mt-2 text-white w-full py-2 px-4 border border-gray-700 z-50">
+                                <div className="absolute left-0 mt-2  w-full py-2 px-4 border border-gray-700 z-50">
                                     {/* Add your instrument options here */}
                                     <p className="py-1">Violin</p>
                                     <p className="py-1">Piano</p>
@@ -144,10 +144,10 @@ export default function Media() {
                                         />
                                     </div>
                                     <div className="space-y-3">
-                                        <p className="text-white font-xl uppercase">{item.mediaType}</p>
+                                        <p className=" font-xl uppercase">{item.mediaType}</p>
 
-                                        <h3 className="text-white text-3xl font-xl">{item.title}</h3>
-                                        <h3 className="text-white text-normal italic "> {item.subtitle}</h3>
+                                        <h3 className=" text-3xl font-xl">{item.title}</h3>
+                                        <h3 className=" text-normal italic "> {item.subtitle}</h3>
                                         <p className="text-gray-400 text-sm line-clamp-2">{item.description}</p>
                                         <button className="border border-white px-6 py-3 hover:bg-white hover:text-black transition-colors">
                                             Learn More

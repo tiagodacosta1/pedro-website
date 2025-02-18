@@ -6,19 +6,19 @@ const HomePage = () => {
   return (
     <div>
       <div className="relative min-h-screen flex flex-col justify-end">
-        <Image src="/hero.png" alt="Hero background" layout="fill" objectFit="cover" quality={100} priority />
+        <Image src="/image005.jpg" alt="Hero background" layout="fill" objectFit="cover" quality={100} priority />
 
         {/* Content Overlay */}
         <div className="relative w-full flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 py-6 bg-gradient-to-b from-transparent to-red-500">
           <div className="mb-4 sm:mb-0 text-center sm:text-left">
-            <p className="text-base sm:text-lg md:text-xl font-light">
-              Composer, Researcher <br className="hidden sm:inline" /> & Artist
-            </p>
+            <h2 className="text-base sm:text-lg md:text-xl ">
+              Composer & Researcher
+            </h2>
           </div>
           <div>
-            <button className="text-base sm:text-lg md:text-xl font-medium underline underline-offset-8 hover:text-white transition-colors">
+            {/* <button className="text-base sm:text-lg md:text-xl font-medium underline underline-offset-8 hover: transition-colors">
               PLAY
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

@@ -10,9 +10,9 @@ export default function BioAndClients() {
         <div className="relative">
             {/* Fixed background and h1 */}
             <div className="fixed top-0 left-0 right-0 z-10 h-[60vh]">
-                <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: "url(/hero.png)" }} />
+                <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: "url(/image001.jpg)" }} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <h1 className="text-white text-4xl font-bold">About</h1>
+                    <h1>About</h1>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@ export default function BioAndClients() {
             <div className="relative z-20 bg-black">
                 <div className="container mx-auto max-w-4xl py-32">
                     {/* Biography Text */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 text-sm leading-relaxed text-gray-400">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 ">
                         <p>
                             PEDRO LARANGEIRA FINISTERRA WAS BORN IN LISBON IN 1994. PEDRO LARANGEIRA FINISTERRA BEGAN HIS MUSICAL
                             STUDIES AT THE CONSERVATORY OF MUSIC IN MADEIRA, WITH DISTINCTION IN SECONDARY STUDIES IN MUSICAL THEORY
@@ -63,9 +63,9 @@ export default function BioAndClients() {
                     {/* Previous Clients Section */}
                     <div className="text-center mb-12">
                         <div className="flex items-center justify-center gap-4 mb-2">
-                            <h2 className="text-2xl tracking-wide text-white">PREVIOUS CLIENTS</h2>
+                            <h2 className="text-2xl tracking-wide ">PREVIOUS CLIENTS</h2>
                         </div>
-                        <p className="text-sm text-gray-400">
+                        <p >
                             I have been lucky to work with some wonderful advertising
                             <br />
                             arts and documentary teams included in above.

@@ -23,12 +23,12 @@ export default function DiscoverWork() {
   ]
 
   return (
-    <section className="py-16 md:py-24 lg:py-32">
-      <div className="container mx-auto px-4">
+    <section className="py-24 ">
+      <div className="container mx-auto px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16 space-y-4">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-wide">Discover My Work</h2>
-          <p className="max-w-2xl mx-auto text-sm md:text-base">
+          <h1 >Discover My Work</h1>
+          <p className="max-w-2xl mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function DiscoverWork() {
                 />
               </div>
               <h3 className="text-2xl md:text-3xl font-light tracking-wider">{category.title}</h3>
-              <p className="text-sm md:text-base leading-relaxed">{category.description}</p>
+              <p>{category.description}</p>
             </div>
           ))}
         </div>

@@ -57,12 +57,12 @@ export default function ContactForm() {
             {/* Scrollable content */}
             <div className="relative z-10 pt-[60vh]">
                 {/* Hero section with title */}
-                <div className="h-[60vh] flex justify-center items-center text-white text-center absolute top-0 left-0 w-full">
-                    <h1 className="text-4xl font-bold">Contact</h1>
+                <div className="h-[60vh] flex justify-center items-center  text-center absolute top-0 left-0 w-full">
+                    <h1>Contact</h1>
                 </div>
 
                 {/* Contact form section */}
-                <div className="flex flex-col md:flex-row bg-black text-white py-32 px-10 md:px-20">
+                <div className="flex flex-col md:flex-row bg-black  py-32 px-10 md:px-20">
                     {/* Left Section */}
                     <div className="md:w-1/2 space-y-6">
                         <h2 className="text-lg uppercase tracking-wide">Get in Touch</h2>
@@ -129,7 +129,7 @@ export default function ContactForm() {
                         </form>
 
                         {/* Status message */}
-                        {status && <p className="text-center text-white mt-4">{status}</p>}
+                        {status && <p className="text-center  mt-4">{status}</p>}
                     </div>
                 </div>
             </div>

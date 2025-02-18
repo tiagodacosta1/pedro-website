@@ -9,8 +9,8 @@ export default function Footer() {
     }
 
     return (
-        <footer className="text-white py-6 px-4 md:px-8">
-            <div className="container mx-auto flex flex-col space-y-4 md:space-y-0 md:flex-row md:items-center md:justify-between text-sm">
+        <footer className=" py-6 px-4 md:px-8">
+            <div className="container mx-auto flex flex-col space-y-4 md:space-y-0 md:flex-row md:items-center md:justify-between">
                 {/* Copyright - Full width on mobile, normal on desktop */}
                 <h3 className="text-center md:text-left">© {new Date().getFullYear()} INAME. ALL RIGHTS RESERVED.</h3>
 

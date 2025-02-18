@@ -56,13 +56,10 @@ const Header = () => {
             </header>
 
             {menuOpen && (
-                <div
-                    ref={menuRef}
-                    className="absolute top-20 left-0 right-0 h-[70vh] bg-black  flex flex-col sm:flex-row z-40"
-                >
+                <div ref={menuRef} className="absolute top-20 left-0 right-0 h-[70vh] bg-black flex flex-col sm:flex-row z-40">
                     <div className="flex-1 relative sm:w-1/2">
                         <Image src="/hero.png" alt="Hero Image" layout="fill" objectFit="cover" className="w-full h-full" />
-                        <div className="absolute bottom-4 left-4 bg-black bg-opacity-50  p-4 rounded">
+                        <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 p-4 rounded">
                             <p className="text-xl font-bold">Event Name Here</p>
                             <p className="text-lg font-medium">London, 2024</p>
                         </div>
@@ -84,7 +81,7 @@ const Header = () => {
                         </Link>
                         <Link href="/MyMusic" className="text-2xl font-semibold uppercase ml-8" onClick={closeMenu}>
                             My Music
-                            <p className="text-sm italic opacity-70">Listen to Pedro's music</p>
+                            <p className="text-sm italic opacity-70">Listen to Pedro&apos;s music</p>
                         </Link>
                         <Link href="/Media" className="text-2xl font-semibold uppercase ml-8" onClick={closeMenu}>
                             Media

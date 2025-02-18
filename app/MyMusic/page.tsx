@@ -92,7 +92,7 @@ export default function MyMusic() {
                                 <p className="text-gray-400 mt-2"> for the Lumatone</p>
                                 <p className="text-gray-400 mt-2"> {`1'30''`}</p>
                                 <p className="text-gray-400 mt-4">
-                                    Written in comemoration of Alexandra Mouroutsou's 10th birthday.
+                                    {`Written in comemoration of Alexandra Mouroutsou's 10th birthday.`}
                                 </p>
                                 <button className="mt-4 px-4 py-2 border border-white hover:bg-white hover:text-black transition">
                                     See Score Excerpt

@@ -43,7 +43,7 @@ const Header = () => {
                 {/* Name on the left */}
                 <div className="ml-8 text-xl">
                     <Link href="/" className="text-2xl font-semibold uppercase">
-                        Pedro <br /> Finisterra
+                        Pedro <br /> Laranjeira <br />Finisterra
                     </Link>
                 </div>
 

@@ -101,9 +101,10 @@ export default function Media() {
                             {genreDropdownOpen && (
                                 <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
                                     {/* Add your genre options here */}
+                                    <p className="py-1">Compositions</p>
+                                    <p className="py-1">Microtonal Improvisations</p>
                                     <p className="py-1">Jazz</p>
-                                    <p className="py-1">Classical</p>
-                                    <p className="py-1">Electronic</p>
+                                    <p className="py-1">A Capella Arrangements</p>
                                 </div>
                             )}
                         </div>
@@ -120,6 +121,7 @@ export default function Media() {
                                     <p className="py-1">Violin</p>
                                     <p className="py-1">Piano</p>
                                     <p className="py-1">Electric Bass</p>
+                                    <p className="py-1">test</p>
                                 </div>
                             )}
                         </div>

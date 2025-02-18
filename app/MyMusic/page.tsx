@@ -7,6 +7,7 @@ import Image from "next/image";
 export default function MyMusic() {
     const [genreDropdownOpen, setGenreDropdownOpen] = useState(false);
     const [instrumentDropdownOpen, setInstrumentDropdownOpen] = useState(false);
+    const [tuningDropdownOpen, setTuningDropdownOpen] = useState(false);
 
     return (
         <div>
@@ -38,10 +39,10 @@ export default function MyMusic() {
                         </button>
                         {genreDropdownOpen && (
                             <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
-                                {/* Add your genre options here */}
+                                <p className="py-1">Compositions</p>
+                                <p className="py-1">Improvisations</p>
                                 <p className="py-1">Jazz</p>
-                                <p className="py-1">Classical</p>
-                                <p className="py-1">Electronic</p>
+                                <p className="py-1">Arrangements</p>
                             </div>
                         )}
                     </div>
@@ -53,11 +54,26 @@ export default function MyMusic() {
                             By Instrument <ArrowDown size={16} />
                         </button>
                         {instrumentDropdownOpen && (
-                            <div className="absolute left-0 mt-2 text-white w-full py-2 px-4 border border-gray-700 z-50">
-                                {/* Add your instrument options here */}
+                            <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
                                 <p className="py-1">Violin</p>
                                 <p className="py-1">Piano</p>
                                 <p className="py-1">Electric Bass</p>
+                            </div>
+                        )}
+                    </div>
+                    <div className="relative text-center">
+                        <button
+                            className="text-gray-400 flex items-center justify-center gap-2 mx-auto"
+                            onClick={() => setTuningDropdownOpen(!tuningDropdownOpen)}
+                        >
+                            Tuning & Intonation <ArrowDown size={16} />
+                        </button>
+                        {tuningDropdownOpen && (
+                            <div className="absolute left-0 mt-2 bg-black text-white w-full py-2 px-4 border border-gray-700 z-50">
+                                <p className="py-1">Just Intonation</p>
+                                <p className="py-1">Equal Temperament</p>
+                                <p className="py-1">Microtonal Tuning</p>
+                                <p className="py-1">Historical Temperaments</p>
                             </div>
                         )}
                     </div>
@@ -71,12 +87,12 @@ export default function MyMusic() {
                             className="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-start gap-8"
                         >
                             <div className="flex-1">
-                                <p className="text-gray-400 text-sm">GENRE/STYLE • EDITABLE TYPE • INSTRUMENT, VOICE, VIOLA</p>
-                                <h2 className="text-2xl font-semibold mt-2">Dreams from an Old Memory</h2>
-                                <p className="text-gray-400 mt-2">2024 by Electric Bass and Electronics Written for Laura Perez Rodas</p>
+                                <h2 className="text-2xl font-semibold mt-2">... spiraling.</h2>
+                                <p className="text-gray-400 mt-2">2024/2025 </p>
+                                <p className="text-gray-400 mt-2"> for the Lumatone</p>
+                                <p className="text-gray-400 mt-2"> {`1'30''`}</p>
                                 <p className="text-gray-400 mt-4">
-                                    Based on Swedish folklore songs with experimental harmony and the
-                                    18th-century Chronicle of Lundenberg's Orchestra. {/* Add additional content here */}
+                                    Written in comemoration of Alexandra Mouroutsou's 10th birthday.
                                 </p>
                                 <button className="mt-4 px-4 py-2 border border-white hover:bg-white hover:text-black transition">
                                     See Score Excerpt

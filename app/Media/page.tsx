@@ -74,7 +74,7 @@ export default function Media() {
             <div className="fixed top-0 left-0 right-0 z-10 h-[60vh]">
                 <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: "url(/hero.png)" }} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <h1 className=" text-4xl font-bold">Media</h1>
+                    <h1>Media</h1>
                 </div>
             </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { ArrowDown, FileText, Video } from 'lucide-react'
-import { Checkbox } from "@/components/ui/checkbox"
+import { Checkbox } from "./Checkbox"
 import {
     allEntries,
     musicTypes,

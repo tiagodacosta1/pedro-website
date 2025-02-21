@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowDown, FileText, Video } from "lucide-react"
+import { ArrowDown, FileText, Video } from 'lucide-react'
+import { Checkbox } from "@/components/ui/checkbox"
 import {
     allEntries,
     musicTypes,
@@ -21,15 +22,68 @@ export default function MyMusic() {
     const [instrumentationDropdownOpen, setInstrumentationDropdownOpen] = useState(false)
     const [tuningDropdownOpen, setTuningDropdownOpen] = useState(false)
 
-    const [selectedMusicType, setSelectedMusicType] = useState<MusicType | null>(null)
-    const [selectedInstrumentation, setSelectedInstrumentation] = useState<string | null>(null)
-    const [selectedTuning, setSelectedTuning] = useState<string | null>(null)
+    // Update state to handle multiple selections
+    const [selectedMusicTypes, setSelectedMusicTypes] = useState<Set<string>>(new Set())
+    const [selectedInstrumentations, setSelectedInstrumentations] = useState<Set<string>>(new Set())
+    const [selectedTunings, setSelectedTunings] = useState<Set<string>>(new Set())
+
+    const toggleMusicType = (type: string) => {
+        const newSelected = new Set(selectedMusicTypes)
+        if (newSelected.has(type)) {
+            newSelected.delete(type)
+        } else {
+            newSelected.add(type)
+        }
+        setSelectedMusicTypes(newSelected)
+    }
+
+    const toggleInstrumentation = (item: string) => {
+        const newSelected = new Set(selectedInstrumentations)
+        if (newSelected.has(item)) {
+            newSelected.delete(item)
+        } else {
+            newSelected.add(item)
+        }
+        setSelectedInstrumentations(newSelected)
+    }
+
+    const toggleTuning = (item: string) => {
+        const newSelected = new Set(selectedTunings)
+        if (newSelected.has(item)) {
+            newSelected.delete(item)
+        } else {
+            newSelected.add(item)
+        }
+        setSelectedTunings(newSelected)
+    }
 
     const getCategoryEntries = (): MusicEntry[] => {
-        if (selectedCategory === "View All") {
-            return allEntries
+        let entries = selectedCategory === "View All"
+            ? allEntries
+            : allEntries.filter((entry) => entry.category === selectedCategory)
+
+        // Filter by selected music types
+        if (selectedMusicTypes.size > 0) {
+            entries = entries.filter(entry =>
+                entry.typeOfMusic.split(", ").some(type => selectedMusicTypes.has(type))
+            )
         }
-        return allEntries.filter((entry) => entry.category === selectedCategory)
+
+        // Filter by selected instrumentations
+        if (selectedInstrumentations.size > 0) {
+            entries = entries.filter(entry =>
+                entry.instrumentationResources.split(", ").some(inst => selectedInstrumentations.has(inst))
+            )
+        }
+
+        // Filter by selected tunings
+        if (selectedTunings.size > 0) {
+            entries = entries.filter(entry =>
+                entry.tuningSystems.split(", ").some(tuning => selectedTunings.has(tuning))
+            )
+        }
+
+        return entries
     }
 
     return (
@@ -62,87 +116,88 @@ export default function MyMusic() {
                 <div className="mt-8 pb-6 border-b border-gray-700">
                     <h2 className="text-2xl font-semibold mb-4">Filters</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                        <div className="relative">
+                        {/* Music Type Filter */}
+                        <div className="space-y-2">
                             <button
                                 className="w-full py-2 px-4 bg-gray-800 text-white rounded flex items-center justify-between"
                                 onClick={() => setMusicTypeDropdownOpen(!musicTypeDropdownOpen)}
                             >
-                                <span>{selectedMusicType || "Type of Music"}</span> <ArrowDown size={16} />
+                                <span>Type of Music ({selectedMusicTypes.size})</span>
+                                <ArrowDown size={16} />
                             </button>
                             {musicTypeDropdownOpen && (
-                                <div className="absolute left-0 mt-2 w-full py-2 px-4 bg-gray-800 border border-gray-700 rounded z-50 max-h-60 overflow-y-auto">
+                                <div className="mt-2 p-4 bg-gray-800 border border-gray-700 rounded max-h-60 overflow-y-auto">
                                     {musicTypes.map((type) => (
-                                        <p
-                                            key={type}
-                                            className="py-1 hover:bg-gray-700 cursor-pointer"
-                                            onClick={() => {
-                                                setSelectedMusicType(type)
-                                                setMusicTypeDropdownOpen(false)
-                                            }}
-                                        >
-                                            {type}
-                                        </p>
+                                        <label key={type} className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer">
+                                            <Checkbox
+                                                checked={selectedMusicTypes.has(type)}
+                                                onCheckedChange={() => toggleMusicType(type)}
+                                            />
+                                            <span>{type}</span>
+                                        </label>
                                     ))}
                                 </div>
                             )}
                         </div>
-                        <div className="relative">
+
+                        {/* Instrumentation Filter */}
+                        <div className="space-y-2">
                             <button
                                 className="w-full py-2 px-4 bg-gray-800 text-white rounded flex items-center justify-between"
                                 onClick={() => setInstrumentationDropdownOpen(!instrumentationDropdownOpen)}
                             >
-                                <span>{selectedInstrumentation || "Instrumentation & Resources"}</span> <ArrowDown size={16} />
+                                <span>Instrumentation ({selectedInstrumentations.size})</span>
+                                <ArrowDown size={16} />
                             </button>
                             {instrumentationDropdownOpen && (
-                                <div className="absolute left-0 mt-2 w-full py-2 px-4 bg-gray-800 border border-gray-700 rounded z-50 max-h-60 overflow-y-auto">
+                                <div className="mt-2 p-4 bg-gray-800 border border-gray-700 rounded max-h-60 overflow-y-auto">
                                     {(Object.entries(instrumentationAndResources) as [InstrumentationCategory, string[]][]).map(
                                         ([category, items]) => (
                                             <div key={category}>
                                                 <h3 className="text-sm font-semibold text-gray-400 mt-2 mb-1">{category}</h3>
                                                 {items.map((item) => (
-                                                    <p
-                                                        key={item}
-                                                        className="py-1 hover:bg-gray-700 cursor-pointer"
-                                                        onClick={() => {
-                                                            setSelectedInstrumentation(item)
-                                                            setInstrumentationDropdownOpen(false)
-                                                        }}
-                                                    >
-                                                        {item}
-                                                    </p>
+                                                    <label key={item} className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer">
+                                                        <Checkbox
+                                                            checked={selectedInstrumentations.has(item)}
+                                                            onCheckedChange={() => toggleInstrumentation(item)}
+                                                        />
+                                                        <span>{item}</span>
+                                                    </label>
                                                 ))}
                                             </div>
-                                        ),
+                                        )
                                     )}
                                 </div>
                             )}
                         </div>
-                        <div className="relative">
+
+                        {/* Tuning Systems Filter */}
+                        <div className="space-y-2">
                             <button
                                 className="w-full py-2 px-4 bg-gray-800 text-white rounded flex items-center justify-between"
                                 onClick={() => setTuningDropdownOpen(!tuningDropdownOpen)}
                             >
-                                <span>{selectedTuning || "Tuning Systems & Intonation"}</span> <ArrowDown size={16} />
+                                <span>Tuning Systems ({selectedTunings.size})</span>
+                                <ArrowDown size={16} />
                             </button>
                             {tuningDropdownOpen && (
-                                <div className="absolute left-0 mt-2 w-full py-2 px-4 bg-gray-800 border border-gray-700 rounded z-50 max-h-60 overflow-y-auto">
-                                    {(Object.entries(tuningSystems) as [TuningSystemCategory, string[]][]).map(([category, items]) => (
-                                        <div key={category}>
-                                            <h3 className="text-sm font-semibold text-gray-400 mt-2 mb-1">{category}</h3>
-                                            {items.map((item) => (
-                                                <p
-                                                    key={item}
-                                                    className="py-1 hover:bg-gray-700 cursor-pointer"
-                                                    onClick={() => {
-                                                        setSelectedTuning(item)
-                                                        setTuningDropdownOpen(false)
-                                                    }}
-                                                >
-                                                    {item}
-                                                </p>
-                                            ))}
-                                        </div>
-                                    ))}
+                                <div className="mt-2 p-4 bg-gray-800 border border-gray-700 rounded max-h-60 overflow-y-auto">
+                                    {(Object.entries(tuningSystems) as [TuningSystemCategory, string[]][]).map(
+                                        ([category, items]) => (
+                                            <div key={category}>
+                                                <h3 className="text-sm font-semibold text-gray-400 mt-2 mb-1">{category}</h3>
+                                                {items.map((item) => (
+                                                    <label key={item} className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer">
+                                                        <Checkbox
+                                                            checked={selectedTunings.has(item)}
+                                                            onCheckedChange={() => toggleTuning(item)}
+                                                        />
+                                                        <span>{item}</span>
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        )
+                                    )}
                                 </div>
                             )}
                         </div>
@@ -187,18 +242,23 @@ export default function MyMusic() {
                                     )}
                                 </div>
                             </div>
-                            <div className="flex-1 flex flex-col items-center sticky top-64">
+                            <div className="flex-1 flex flex-col items-center gap-4">
                                 {entry.videoLinks && entry.videoLinks.length > 0 && (
-                                    <iframe
-                                        width="100%"
-                                        height="315"
-                                        src={`https://www.youtube.com/embed/${new URL(entry.videoLinks[0]).searchParams.get("v")}`}
-                                        title={`${entry.title} video`}
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        className="rounded-lg"
-                                    ></iframe>
+                                    <>
+                                        {entry.videoLinks.map((link, index) => (
+                                            <iframe
+                                                key={index}
+                                                width="100%"
+                                                height="315"
+                                                src={`https://www.youtube.com/embed/${new URL(link).searchParams.get("v")}`}
+                                                title={`${entry.title} video ${index + 1}`}
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                                className="rounded-lg"
+                                            ></iframe>
+                                        ))}
+                                    </>
                                 )}
                             </div>
                         </div>
@@ -208,4 +268,3 @@ export default function MyMusic() {
         </div>
     )
 }
-

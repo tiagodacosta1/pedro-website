@@ -1,6 +1,17 @@
 import ShortBio from "./ShortBio"
 import DiscoverWork from "./DiscoverWork"
 import Image from "next/image"
+import { allEntries } from './MyMusic/musicEntries';
+
+const updatedEntries = allEntries.map(entry => ({
+  ...entry,
+  "Type of Music": "",
+  "Instrumentation & Resources": "",
+  "Tuning Systems & Intonation": ""
+}));
+
+console.log(JSON.stringify(updatedEntries, null, 2));
+console.log(`\nUpdated ${updatedEntries.length} entries with new keys.`);
 
 const HomePage = () => {
   return (
@@ -30,4 +41,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-

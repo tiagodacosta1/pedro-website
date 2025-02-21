@@ -1,14 +1,4 @@
-export type MusicEntry = {
-    category: string
-    title: string
-    year: string
-    instrumentation: string
-    duration: string
-    additionalInfo?: string
-    description: string
-    videoLinks?: string[]
-    scoreLink?: string
-}
+
 
 export type MusicType = string
 
@@ -26,6 +16,21 @@ export type TuningSystemCategory =
 export type TuningSystems = {
     [key in TuningSystemCategory]: string[]
 }
+// Define the MusicEntry type
+export type MusicEntry = {
+    category: string;
+    title: string;
+    year: string;
+    instrumentation: string;
+    duration: string;
+    additionalInfo?: string;
+    description: string;
+    videoLinks?: string[];
+    scoreLink?: string;
+    typeOfMusic: string;
+    instrumentationResources: string;
+    tuningSystems: string;
+};
 
 export const allEntries: MusicEntry[] = [
     {
@@ -36,6 +41,9 @@ export const allEntries: MusicEntry[] = [
         duration: "1'30''",
         additionalInfo: "Poem by Eugenio de Andrade",
         description: "Written in commemoration of Alexandra Mouroutsou's 10th birthday.",
+        typeOfMusic: "Concert Music, Instrumental, Microtonal",
+        instrumentationResources: "Lumatone, Pianoteq, Solo",
+        tuningSystems: "19EDO"
     },
     {
         category: "Compositions",
@@ -45,8 +53,10 @@ export const allEntries: MusicEntry[] = [
         duration: "4'30''",
         description: "A heartfelt composition exploring the depths of companionship.",
         videoLinks: ["https://www.youtube.com/watch?v=sje-9JSeY4o"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_4535701f090d4a388aaf5515485d59d0.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_4535701f090d4a388aaf5515485d59d0.pdf",
+        typeOfMusic: "Concert Music, (Quasi-)Microtonal, Song, Vocal",
+        instrumentationResources: "Duo, Piano, Voice (Soprano)",
+        tuningSystems: "12 Notes per Octave, Just Intonation"
     },
     {
         category: "Compositions",
@@ -55,6 +65,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for ensemble",
         duration: "6'00''",
         description: "An exploration of musical elements coming together.",
+        typeOfMusic: "Concert Music, Instrumental, Microtonal, Orchestral, Microtonal",
+        instrumentationResources: "Bassoon, Cello, Clarinet (Bb), Double Bass, Flute (C), Flute (Piccolo), Horn (F), Oboe (Soprano), Oboe (Cor Anglais), Percussion, Sinfonietta, Trombone (Tenor), Trombone (Bass), Trumpet (Bb), Tuba, Viola, Violin",
+        tuningSystems: "2EDO, 3EDO, 4EDO, 5EDO, 6EDO, 7EDO, 8EDO, 9EDO, 11EDO, 13EDO, 17EDO, 19EDO, 23EDO, 2ED5\\12EDO, 2ED7\\12EDO, 12 Notes per Octave, 24 Notes per Octave, 48 Notes per Octave, Approximated Equal Tunings, Just Intonation"
     },
     {
         category: "Compositions",
@@ -63,6 +76,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for chamber ensemble",
         duration: "7'30''",
         description: "A musical journey towards spiritual knowledge.",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, Microtonal",
+        instrumentationResources: "Bassoon, Cello, Clarinet (Bb), Clarinet (Bass), Flute (C), Flute (Alto), Flute (Piccolo), Guitar (Electric), Mixed Ensemble, Percussion, Saxophone (Alto), Viola",
+        tuningSystems: "5EDO, 11EDO, 4ED11/7, 12 Notes per Octave, 24 Notes per Octave, 48 Notes per Octave, Approximated Equal Tunings, Just Intonation"
     },
     {
         category: "Compositions",
@@ -71,6 +87,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for orchestra",
         duration: "12'00''",
         description: "A musical narrative of a pilgrim's journey.",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, Microtonal",
+        instrumentationResources: "Guitar (Classical), Guitar Quartet",
+        tuningSystems: "5EDO, 7EDO, 11EDO, 12 Notes per Octave, 24 Notes per Octave, 48 Notes per Octave, Approximated Equal Tunings, Just Intonation"
     },
     {
         category: "Compositions",
@@ -79,6 +98,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for electronics",
         duration: "8'45''",
         description: "An electronic piece exploring unusual sonic spaces.",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, Microtonal",
+        instrumentationResources: "Cello, String Quartet, Viola, Violin",
+        tuningSystems: "1ED3/2, 2ED3/2, 3ED3/2, 4ED3/2, 5ED3/2, 6ED3/2, 7ED3/2, 12 Notes per Octave, 24 Notes per Octave, 48 Notes per Octave, Approximated Equal Tunings, Just Intonation"
     },
     {
         category: "Compositions",
@@ -87,6 +109,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for piano",
         duration: "5'30''",
         description: "A nostalgic piece evoking distant memories.",
+        typeOfMusic: "Concert Music, Electroacoustic (Mixed), Instrumental, Microtonal",
+        instrumentationResources: "2 Speakers, bitKlavier, Keyboard (MIDI), Max/MSP, Solo",
+        tuningSystems: "5EDO, 7EDO, 12EDO, 19EDO, 31EDO, 50EDO"
     },
     {
         category: "Compositions",
@@ -96,8 +121,10 @@ export const allEntries: MusicEntry[] = [
         duration: "8'00''",
         description: "An exploration of choice and consequence through music.",
         videoLinks: ["https://www.youtube.com/watch?v=v5kzRweEB0M"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_5c1406c161364b86bea3b594e0b5de9e.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_5c1406c161364b86bea3b594e0b5de9e.pdf",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, (Quasi-)Microtonal, Music for Dance",
+        instrumentationResources: "Duo, Piano, Violin",
+        tuningSystems: "12 Notes per Octave, 24 Notes per Octave, Just Intonation"
     },
     {
         category: "Compositions",
@@ -107,6 +134,9 @@ export const allEntries: MusicEntry[] = [
         duration: "6'15''",
         description: "A contemplative piece inspired by the biblical figure of Adam.",
         videoLinks: ["https://www.youtube.com/watch?v=WwP_RVeQ_8Y"],
+        typeOfMusic: "Microtonal, Opera (Chamber), Vocal",
+        instrumentationResources: "Accordion, bitKlavier, Cello, Clarinet (Bb), Clarinet (Bass), Keyboard (MIDI), Mixed Ensemble, Saxophone (Alto), Saxophone (Tenor), Violin, Voice (Baritone), Voice (Mezzo), Voice (Soprano), Voice (Tenor)",
+        tuningSystems: "5EDO, 6EDO, 7EDO, 9EDO, 10EDO, 11EDO, 12 Notes per Octave, 48 Notes per Octave, 72 Notes per Octave, Approximated Equal Tunings, Just Intonation"
     },
     {
         category: "Compositions",
@@ -116,6 +146,9 @@ export const allEntries: MusicEntry[] = [
         duration: "5'45''",
         description: "An electronic composition exploring the concept of refraction.",
         videoLinks: ["https://www.youtube.com/watch?v=fQnDYNsEvaY"],
+        typeOfMusic: "Electroacoustic (Acousmatic), Music for Dance",
+        instrumentationResources: "2 Speakers",
+        tuningSystems: "7EDO, 8EDO, 9EDO, 10EDO, 12EDO, 17EDO, 19EDO, 48EDO, Just Intonation, Distorted Harmonic Series"
     },
     {
         category: "Compositions",
@@ -124,6 +157,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for ensemble",
         duration: "7'00''",
         description: "A piece questioning the nature of human interaction.",
+        typeOfMusic: "Concert Music, Microtonal, Song, Vocal",
+        instrumentationResources: "bitklavier, Duo, Keyboard (MIDI), Voice (Soprano)",
+        tuningSystems: "17EDO, 12 Notes per Octave, 24 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -138,6 +174,9 @@ export const allEntries: MusicEntry[] = [
             "https://www.youtube.com/watch?v=7g2IBdn9x7Q",
         ],
         scoreLink: "https://pedroffinisterra.bandcamp.com/album/transeuntes",
+        typeOfMusic: "Electroacoustic (Acousmatic), Electroacoustic (Mixed), Music for Dance, VST",
+        instrumentationResources: "2 Speakers",
+        tuningSystems: ""
     },
     {
         category: "Compositions",
@@ -147,8 +186,10 @@ export const allEntries: MusicEntry[] = [
         duration: "7'30''",
         description: "A choral work exploring the myth of the Tower of Babel.",
         videoLinks: ["https://www.youtube.com/watch?v=t88u4xz8Lac"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_68411c9e6d404100a5019e60f660e19f.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_68411c9e6d404100a5019e60f660e19f.pdf",
+        typeOfMusic: "Choral, Concert Music, Microtonal, (Quasi-)Microtonal Music, Vocal",
+        instrumentationResources: "Choir (SATB), Voice (Alto), Voice (Bass), Voice (Soprano), Voice (Tenor)",
+        tuningSystems: "1ED11\\12EDO, 2ED11\\12EDO, 3ED11\\12EDO, 4ED11\\12EDO, 5ED11\\12EDO, 6ED11\\12EDO, 7ED11\\12EDO, 8ED11\\12EDO, 9ED11\\12EDO, 12 Notes per Octave, 24 Notes per Octave, Approximated Equal Tunings"
     },
     {
         category: "Compositions",
@@ -158,6 +199,9 @@ export const allEntries: MusicEntry[] = [
         duration: "15'00''",
         description: "A musical portrayal of Vaslav Nijinsky's complex life and artistry.",
         videoLinks: ["https://www.youtube.com/watch?v=nZXaej6lnkA"],
+        typeOfMusic: "Music for Dance",
+        instrumentationResources: "",
+        tuningSystems: ""
     },
     {
         category: "Compositions",
@@ -167,6 +211,9 @@ export const allEntries: MusicEntry[] = [
         duration: "6'30''",
         description: "A piece exploring the concept of negation in music.",
         videoLinks: ["https://www.youtube.com/watch?v=6xXhNt_vpcY"],
+        typeOfMusic: "Electroacoustic (Acousmatic)",
+        instrumentationResources: "2 Speakers",
+        tuningSystems: "10EDO, 12EDO, Distorted Harmonic Series"
     },
     {
         category: "Compositions",
@@ -176,8 +223,10 @@ export const allEntries: MusicEntry[] = [
         duration: "8'45''",
         description: "A musical journey inspired by Esperanto.",
         videoLinks: ["https://www.youtube.com/watch?v=OXOg7pixHIM"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_d302725fd7fd429e90131895391d8804.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_d302725fd7fd429e90131895391d8804.pdf",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, Microtonal",
+        instrumentationResources: "Cello, Clarinet (Bb), Flute (C), Mixed Ensemble, Percussion, Piano, Violin",
+        tuningSystems: "5EDO, 7EDO, 12 Notes per Octave, 24 Notes per Octave, 48 Notes per Octave, Approximated Equal Tunings"
     },
     {
         category: "Compositions",
@@ -187,8 +236,10 @@ export const allEntries: MusicEntry[] = [
         duration: "5'00''",
         description: "A solo piece exploring the sonic possibilities of the marimba.",
         videoLinks: ["https://oneglasseye.bandcamp.com/track/ma-rim-ba"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_d5c0ae9b5607448589ee70922e57a6ff.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_d5c0ae9b5607448589ee70922e57a6ff.pdf",
+        typeOfMusic: "Concert Music, Electroacoustic (Mixed), Instrumental",
+        instrumentationResources: "2 Speakers, Max/MSP, Percussion, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -198,8 +249,10 @@ export const allEntries: MusicEntry[] = [
         duration: "7'15''",
         description: "An electronic piece exploring the intersection of humanity and technology.",
         videoLinks: ["http://youtube.com/watch?v=IDM0THAddQs"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_3a857159c0944a99a50721b823221de7.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_3a857159c0944a99a50721b823221de7.pdf",
+        typeOfMusic: "Microtonal, (Quasi-)Microtonal, Opera (Chamber), Vocal",
+        instrumentationResources: "bitklavier, Cello, Choir (Operatic), Clarinet (Bb), Clarinet (Bass), Double Bass, Flute (C), Flute (Piccolo), Harp, Keyboard (MIDI), Max/MSP, Mixed Ensemble, Percussion, Piano, Viola, Violin, Voice (Baritone), Voice (Mezzo), Voice (Soprano), Voice (Tenor)",
+        tuningSystems: "17EDO, 12 Notes per Octave, 24 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -209,8 +262,10 @@ export const allEntries: MusicEntry[] = [
         duration: "9'30''",
         description: "A piece inspired by ancient Mithraic rituals.",
         videoLinks: ["https://www.youtube.com/watch?v=-A3b3joAFPA"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_5fd76c3f541340a7a8b7738d21d6110b.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_5fd76c3f541340a7a8b7738d21d6110b.pdf",
+        typeOfMusic: "Opera (Chamber), Vocal",
+        instrumentationResources: "Piano, Voice (Baritone), Voice (Mezzo), Voice (Tenor)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -220,8 +275,10 @@ export const allEntries: MusicEntry[] = [
         duration: "8'00''",
         description: "The first movement of a larger work exploring the concept of crowds.",
         videoLinks: ["https://www.youtube.com/watch?v=fl5wrPwH8ns"],
-        scoreLink:
-            "https://portfolios.esml.ipl.pt/oprojecto/90-criacao-circulacao-registo-audio-e-edicao-de-obras-de-musica-portuguesa-contemporanea-numa-perspetiva-reflexiva/133-multidao-i-primeiro",
+        scoreLink: "https://portfolios.esml.ipl.pt/oprojecto/90-criacao-circulacao-registo-audio-e-edicao-de-obras-de-musica-portuguesa-contemporanea-numa-perspetiva-reflexiva/133-multidao-i-primeiro",
+        typeOfMusic: "(Quasi-)Microtonal, Opera (Chamber), Opera (Monodrama), Vocal",
+        instrumentationResources: "Cello, Clarinet (Bb), Clarinet (Bass), Double Bass, Flute (C), Flute (Alto), Harp, Horn (F), Mixed Ensemble, Percussion, Violin, Voice (Countertenor)",
+        tuningSystems: "12 Notes per Octave, 24 Notes per Octave, 48 Notes per Octave, Distorted Harmonic Series"
     },
     {
         category: "Compositions",
@@ -232,6 +289,9 @@ export const allEntries: MusicEntry[] = [
         description: "An experimental piece for solo double bass.",
         videoLinks: ["https://www.youtube.com/watch?v=trajxDl1b9c"],
         scoreLink: "https://www.scherzoeditions.com/webshop/shop/ctb-exp1-para-contrabaixo-pedro-f-finisterra/",
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Double Bass, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -242,15 +302,21 @@ export const allEntries: MusicEntry[] = [
         description: "A piece inspired by the delicate nature of flowers.",
         videoLinks: ["https://www.youtube.com/watch?v=H9vDP-Ml4cM"],
         scoreLink: "https://portfolios.esml.ipl.pt/oprojecto/89-performance-colaborativa-fmh-esml/116-flor",
+        typeOfMusic: "Chamber, Concert Music, Electroacoustic (Mixed), Instrumental, Music for Dance, (Quasi-)Microtonal",
+        instrumentationResources: "1 or 2 Speakers, Cello, Double Bass, Flute (C), Max/MSP, Mixed Ensemble, Piano, Violin",
+        tuningSystems: "12 Notes per Octave, 24 Notes per Octave, Distorted Harmonic Series"
     },
     {
         category: "Compositions",
         title: "Lilith",
         year: "2016",
-        instrumentation: "for voice and electronics",
+        instrumentation: "for voice and orchestra",
         duration: "8'15''",
         description: "A piece exploring the mythological figure of Lilith.",
         videoLinks: ["https://www.youtube.com/watch?v=R0ZDQ-6TrhQ"],
+        typeOfMusic: "Opera (Narrated Tale), Vocal",
+        instrumentationResources: "Bassoon, Clarinet (Bb), Flute (C), Guitar (Classical), Harp, Horn (F), Oboe (Soprano), Percussion, Piano, Trombone (Tenor), Trumpet (Bb), Tuba, Voice (Baritone), Voice (Narrator), Voice (Soprano), Wind Orchestra (Small)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -261,6 +327,9 @@ export const allEntries: MusicEntry[] = [
         description: "A contemporary take on the traditional lament form.",
         videoLinks: ["https://www.youtube.com/watch?v=pWzALCt9cws"],
         scoreLink: "https://portfolios.esml.ipl.pt/oprojecto/98-old-is-new-concerto-1/84-lamento",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, (Quasi-)Microtonal",
+        instrumentationResources: "Cello, Double Bass, Flute (C), Mixed Ensemble, Oboe (Soprano), Viola, Violin",
+        tuningSystems: "12 Notes per Octave, 24 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -270,8 +339,10 @@ export const allEntries: MusicEntry[] = [
         duration: "5'30''",
         description: "A solo piano piece exploring various musical expressions.",
         videoLinks: ["https://www.youtube.com/watch?v=i-wkHVZy-7g"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_ed62ca3a0a6e4d06995ebf07a93cb1aa.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_ed62ca3a0a6e4d06995ebf07a93cb1aa.pdf",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, (Quasi-)Microtonal, Music for Dance",
+        instrumentationResources: "Cello, Clarinet (Bb), Double Bass, Flute (C), Mixed Ensemble, Violin",
+        tuningSystems: "12 Notes per Octave, 24 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -281,8 +352,10 @@ export const allEntries: MusicEntry[] = [
         duration: "4'45''",
         description: "A contemplative piece for solo piano.",
         videoLinks: ["http://youtube.com/watch?v=pPvtiPMlaw4"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_0d2194cf6b614166bcbc3d5536a8ba36.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_0d2194cf6b614166bcbc3d5536a8ba36.pdf",
+        typeOfMusic: "Chamber, Concert Music, Instrumental",
+        instrumentationResources: "Bassoon, Clarinet (Bb), Flute (C), Trio",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -293,32 +366,44 @@ export const allEntries: MusicEntry[] = [
         description: "An experimental piece for solo harp.",
         videoLinks: ["https://www.youtube.com/watch?v=6J6KFcayW74"],
         scoreLink: "https://portfolios.esml.ipl.pt/oprojecto/95-semana-da-composicao-2015/156-prjkt-hrp",
+        typeOfMusic: "Concert Music, Electroacoustic (Mixed), Instrumental",
+        instrumentationResources: "2 Speakers, Harp, Max/MSP, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
         title: "Eu não sei…",
         year: "2015",
-        instrumentation: "for voice and piano",
+        instrumentation: "for voice and organ",
         duration: "3'30''",
         description: "A song exploring themes of uncertainty.",
         videoLinks: ["https://www.youtube.com/watch?v=N-Yz9AJJlmc"],
+        typeOfMusic: "Concert Music, Song, Vocal",
+        instrumentationResources: "Duo, Organ (Pipe), Voice (Baritone)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
         title: "Plácidos Domingos",
         year: "2014",
-        instrumentation: "for ensemble",
+        instrumentation: "for voice and piano",
         duration: "5'45''",
         description: "A piece evoking peaceful Sunday afternoons.",
+        typeOfMusic: "Concert Music, Song, Vocal",
+        instrumentationResources: "Duo, Piano, Voice (Baritone)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
         title: "8-bits of Music",
         year: "2014",
-        instrumentation: "for electronics",
+        instrumentation: "for harpsichord",
         duration: "Various",
         description: "A collection of pieces inspired by 8-bit video game music.",
         videoLinks: ["https://www.youtube.com/playlist?list=PL6VcdiGfTfX6k8hNDNVxpS0hOIy3kLXpY"],
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Harpsichord, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -328,8 +413,10 @@ export const allEntries: MusicEntry[] = [
         duration: "4'00''",
         description: "A piece exploring the musical and symbolic properties of the number 7.",
         videoLinks: ["https://www.youtube.com/watch?v=-_lkcsjPGds"],
-        scoreLink:
-            "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_0757df4751e74c8a8ba01b179fc951aa.pdf",
+        scoreLink: "https://8bfb0c4a-9145-4292-aa38-862bb8c72be2.filesusr.com/ugd/644baf_0757df4751e74c8a8ba01b179fc951aa.pdf",
+        typeOfMusic: "Chamber, Concert Music, Instrumental, Vocal",
+        instrumentationResources: "1 or 2 Speakers, Cello, Clarinet (Bb), Flute (C), Mixed Ensemble, Percussion, Piano, Violin, Voice (Soprano)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -340,6 +427,9 @@ export const allEntries: MusicEntry[] = [
         description: "A two-part piece exploring contrasting musical ideas.",
         videoLinks: ["https://www.youtube.com/watch?v=_8ObX6182o0"],
         scoreLink: "https://portfolios.esml.ipl.pt/oprojecto/96-semana-da-composicao-2016/115-flip-point-obsession",
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Piano, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -349,6 +439,9 @@ export const allEntries: MusicEntry[] = [
         duration: "6'15''",
         description: "An experimental piece with unconventional instrumentation.",
         videoLinks: ["https://www.youtube.com/watch?v=jCNf8mFrmWY"],
+        typeOfMusic: "Electroacoustic (Acousmatic)",
+        instrumentationResources: "2 Speakers",
+        tuningSystems: ""
     },
     {
         category: "Compositions",
@@ -357,6 +450,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for harp",
         duration: "4'30''",
         description: "A piece blending harp techniques with rock-inspired rhythms.",
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Harp, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -365,6 +461,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for guitar",
         duration: "3'45''",
         description: "The second in a series of guitar studies.",
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Guitar (Classical), Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -373,6 +472,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for ensemble",
         duration: "5'00''",
         description: "The second part of the 'Dryhg oui' series.",
+        typeOfMusic: "Chamber, Concert Music, Instrumental",
+        instrumentationResources: "Cello, Clarinet (Bb), Piano, Trio",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -382,6 +484,9 @@ export const allEntries: MusicEntry[] = [
         duration: "8'00''",
         description: "A set of four short pieces for solo piano.",
         videoLinks: ["https://www.youtube.com/watch?v=OO84Wd7tfuo"],
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Piano, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -390,6 +495,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for ensemble",
         duration: "4'30''",
         description: "The first part of the 'Dryhg oui' series.",
+        typeOfMusic: "Chamber, Concert Music, Instrumental",
+        instrumentationResources: "Cello, Duo, Piano",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -399,6 +507,9 @@ export const allEntries: MusicEntry[] = [
         duration: "3'15''",
         description: "A tribute piece to the Japanese composer Masashi Hamauzu.",
         videoLinks: ["https://www.youtube.com/watch?v=15OFS9mvX6Y"],
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Piano, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -408,6 +519,9 @@ export const allEntries: MusicEntry[] = [
         duration: "2'45''",
         description: "A piece evoking the beauty of the aurora phenomenon.",
         videoLinks: ["https://www.youtube.com/watch?v=_E6kXfSjeM4"],
+        typeOfMusic: "Choral, Concert Music, Vocal",
+        instrumentationResources: "Choir (SATBB), Voice (Alto), Voice (Baritone), Voice (Bass), Voice (Soprano), Voice (Tenor)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -417,6 +531,9 @@ export const allEntries: MusicEntry[] = [
         duration: "5'30''",
         description: "Two preludes for solo guitar.",
         videoLinks: ["https://www.youtube.com/playlist?list=PL6VcdiGfTfX7tCZ1FNuZNaoLfL7rTp1nx"],
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Guitar (Classical), Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -426,6 +543,9 @@ export const allEntries: MusicEntry[] = [
         duration: "3'00''",
         description: "A piece inspired by the sound of raindrops.",
         videoLinks: ["https://www.youtube.com/watch?v=RlvYXs4mpNI"],
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Piano, Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -435,6 +555,9 @@ export const allEntries: MusicEntry[] = [
         duration: "2'30''",
         description: "The first in a series of guitar studies.",
         videoLinks: ["https://www.youtube.com/watch?v=viGqiocGRsg"],
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Guitar (Classical), Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -444,6 +567,9 @@ export const allEntries: MusicEntry[] = [
         duration: "2'15''",
         description: "A contemplative piece for solo piano.",
         videoLinks: ["https://www.youtube.com/watch?v=X4mExOf3YxQ"],
+        typeOfMusic: "Concert Music, Instrumental",
+        instrumentationResources: "Guitar (Classical), Solo",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Compositions",
@@ -453,6 +579,9 @@ export const allEntries: MusicEntry[] = [
         duration: "2'30''",
         description: "A piece evoking underwater sensations.",
         videoLinks: ["https://www.youtube.com/watch?v=p0cUcI140HE"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "Lumatone, Pianoteq, Solo",
+        tuningSystems: "29EDO"
     },
     {
         category: "Compositions",
@@ -462,6 +591,9 @@ export const allEntries: MusicEntry[] = [
         duration: "1'45''",
         description: "A tribute piece, possibly inspired by Glenn Gould.",
         videoLinks: ["https://www.youtube.com/watch?v=vZbrgxQVM_k"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "Lumatone, Pianoteq, Solo",
+        tuningSystems: "19EDO"
     },
     {
         category: "Compositions",
@@ -471,6 +603,9 @@ export const allEntries: MusicEntry[] = [
         duration: "2'00''",
         description: "The second part of the '... in the name of peace' series.",
         videoLinks: ["https://www.youtube.com/watch?v=Wf0WqkhvEck"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "Lumatone, Pianoteq, Solo",
+        tuningSystems: "26EDO"
     },
     {
         category: "Compositions",
@@ -480,6 +615,9 @@ export const allEntries: MusicEntry[] = [
         duration: "1'30''",
         description: "The first part of the '... in the name of peace' series.",
         videoLinks: ["https://www.youtube.com/watch?v=wMMFFtJ25ww"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "Lumatone, Pianoteq, Solo",
+        tuningSystems: "26EDO"
     },
     {
         category: "Improvisations",
@@ -489,6 +627,9 @@ export const allEntries: MusicEntry[] = [
         duration: "3'45''",
         description: "An improvised piece using chiptune sounds in a 6ED7:5 tuning system.",
         videoLinks: ["https://pedroffinisterra.bandcamp.com/track/chiptune-improvisation-in-6ed7-5"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "bitKlavier, Keyboard (MIDI), Solo",
+        tuningSystems: "6ED7/5"
     },
     {
         category: "Improvisations",
@@ -498,6 +639,9 @@ export const allEntries: MusicEntry[] = [
         duration: "4'30''",
         description: "An improvised piece using a laptop in a 7EDO tuning system.",
         videoLinks: ["https://pedroffinisterra.bandcamp.com/track/laptop-improvisation-in-7ed2-1"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "Laptop, Max/MSP, Solo",
+        tuningSystems: "7EDO"
     },
     {
         category: "Improvisations",
@@ -507,6 +651,9 @@ export const allEntries: MusicEntry[] = [
         duration: "15'00''",
         description: "Three improvisations for MIDI keyboard.",
         videoLinks: ["https://pedroffinisterra.bandcamp.com/album/tri-improvizajoj-por-midi-klavaro"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "Keyboard (MIDI), Max/MSP, Solo",
+        tuningSystems: "1/4 Comma Meantone Temperament, Just Intonation, Distorted Harmonic Series"
     },
     {
         category: "Improvisations",
@@ -516,6 +663,9 @@ export const allEntries: MusicEntry[] = [
         duration: "6'30''",
         description: "An improvised piece in a 17EDO tuning system.",
         videoLinks: ["https://www.youtube.com/watch?v=6bvusHly1fI"],
+        typeOfMusic: "Instrumental, Microtonal",
+        instrumentationResources: "Keyboard (MIDI), Max/MSP, Solo",
+        tuningSystems: "17EDO"
     },
     {
         category: "Improvisations",
@@ -525,6 +675,9 @@ export const allEntries: MusicEntry[] = [
         duration: "7'15''",
         description: "An improvised electronic piece exploring self-perception.",
         videoLinks: ["https://www.youtube.com/watch?v=mgzxm5BHWHs"],
+        typeOfMusic: "Jazz, Vocal",
+        instrumentationResources: "Drums, Guitar (Bass, Electric), Keyboard (Electric), Voice (Narrator)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Jazz",
@@ -534,6 +687,9 @@ export const allEntries: MusicEntry[] = [
         duration: "5'45''",
         description: "A jazz piece incorporating funk elements.",
         videoLinks: ["https://www.youtube.com/watch?v=9m7Ot5SSGzI"],
+        typeOfMusic: "Instrumental, Jazz",
+        instrumentationResources: "Drums, Guitar (Electric), Guitar (Bass, Electric), Jazz Ensemble, Piano, Saxophone (Alto), Saxophone (Tenor), Trombone (Tenor), Trumpet (Bb)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Jazz",
@@ -543,6 +699,9 @@ export const allEntries: MusicEntry[] = [
         duration: "6'30''",
         description: "A jazz tribute to the works of Masashi Hamauzu.",
         videoLinks: ["https://www.youtube.com/watch?v=93llCd-SxkA"],
+        typeOfMusic: "Instrumental, Jazz",
+        instrumentationResources: "Drums, Guitar (Electric), Guitar (Bass, Electric), Jazz Ensemble, Piano, Saxophone (Alto), Trombone (Tenor), Trumpet (Bb)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Jazz",
@@ -552,6 +711,9 @@ export const allEntries: MusicEntry[] = [
         duration: "4'45''",
         description: "A playful jazz piece inspired by early childhood.",
         videoLinks: ["https://www.youtube.com/watch?v=DwblSFpC1dw"],
+        typeOfMusic: "Bossa Nova, Song, Vocal",
+        instrumentationResources: "Bossa Nova Ensemble, Double Bass, Drums, Flute (C), Guitar (Classical), Voice (Mezzo)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Jazz",
@@ -562,6 +724,9 @@ export const allEntries: MusicEntry[] = [
         description: "A jazz piece capturing the energy of rush hour.",
         videoLinks: ["https://www.youtube.com/watch?v=d716YnF-S9I"],
         scoreLink: "https://open.spotify.com/track/5ozh6QZn2pHi0moMAEgHw8?si=6a8571a6c6994df9",
+        typeOfMusic: "Instrumental, Jazz",
+        instrumentationResources: "Big Band, Clarinet (Bb), Double Bass, Drums, Flute (C), Guitar (Bass, Electric) Piano, Saxophone (Alto), Saxophone (Tenor), Trombone (Tenor), Trumpet (Bb), Violin, Voice (Tenor)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Jazz",
@@ -571,6 +736,9 @@ export const allEntries: MusicEntry[] = [
         duration: "7'00''",
         description: "A moody jazz piece evoking the sensation of drowning.",
         videoLinks: ["https://www.youtube.com/watch?v=Puj4ISWTrNI"],
+        typeOfMusic: "Instrumental, Jazz",
+        instrumentationResources: "Accordeon, Big Band, Drums, Flute (C), Guitar (Bass, Electric), Guitar (Electric), Piano, Saxophone (Alto), Trumpet (Bb), Voice (Tenor)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Arrangements",
@@ -583,6 +751,9 @@ export const allEntries: MusicEntry[] = [
             "https://www.youtube.com/watch?v=JzA_bvDTcD4",
             "https://www.youtube.com/live/8l9VrKSpVZE?si=lv3sfKaQ3DtE7xF4&t=837",
         ],
+        typeOfMusic: "A Capella, Vocal",
+        instrumentationResources: "Vocal Quartet (with Beatbox), Voice (Alto), Voice (Bass), Voice (Beatbox), Voice (Mezzo), Voice (Tenor)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Arrangements",
@@ -595,6 +766,9 @@ export const allEntries: MusicEntry[] = [
             "https://www.youtube.com/watch?v=yG_8opUUYaI",
             "https://www.youtube.com/live/8l9VrKSpVZE?si=jNXqVWQBc_FgKkrI&t=1037",
         ],
+        typeOfMusic: "A Capella, Vocal",
+        instrumentationResources: "Vocal Quartet (with Beatbox), Voice (Alto), Voice (Bass), Voice (Beatbox), Voice (Mezzo), Voice (Tenor)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Arrangements",
@@ -603,6 +777,9 @@ export const allEntries: MusicEntry[] = [
         instrumentation: "for vocal ensemble",
         duration: "3'45''",
         description: "An a cappella arrangement of Dulce Pontes' famous fado song.",
+        typeOfMusic: "A Capella, Vocal",
+        instrumentationResources: "Vocal Sextet (with Beatbox), Voice (Alto), Voice (Baritone), Voice (Bass), Voice (Beatbox), Voice (Mezzo), Voice (Tenor), Voice (Soprano)",
+        tuningSystems: "12 Notes per Octave"
     },
     {
         category: "Arrangements",
@@ -612,8 +789,14 @@ export const allEntries: MusicEntry[] = [
         duration: "3'15''",
         description: "An a cappella arrangement of Simone de Oliveira's classic song.",
         videoLinks: ["https://www.youtube.com/watch?v=95ihtSyw4hU"],
-    },
+        typeOfMusic: "A Capella, Vocal",
+        instrumentationResources: "Vocal Octet (with Beatbox), Voice (Alto), Voice (Baritone), Voice (Bass), Voice (Beatbox), Voice (Tenor), Voice (Soprano)",
+        tuningSystems: "12 Notes per Octave"
+    }
+
 ]
+
+
 export const musicTypes: MusicType[] = [
     "A Capella",
     "Bossa Nova",

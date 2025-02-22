@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { ArrowDown, FileText, Video } from 'lucide-react'
+import { useState, useRef, useEffect } from "react"
+import { ArrowDown, FileText, Video } from "lucide-react"
 import { Checkbox } from "./Checkbox"
 import {
     allEntries,
@@ -9,7 +9,6 @@ import {
     instrumentationAndResources,
     tuningSystems,
     type MusicEntry,
-    type MusicType,
     type InstrumentationCategory,
     type TuningSystemCategory,
 } from "./musicEntries"
@@ -22,10 +21,18 @@ export default function MyMusic() {
     const [instrumentationDropdownOpen, setInstrumentationDropdownOpen] = useState(false)
     const [tuningDropdownOpen, setTuningDropdownOpen] = useState(false)
 
-    // Update state to handle multiple selections
     const [selectedMusicTypes, setSelectedMusicTypes] = useState<Set<string>>(new Set())
     const [selectedInstrumentations, setSelectedInstrumentations] = useState<Set<string>>(new Set())
     const [selectedTunings, setSelectedTunings] = useState<Set<string>>(new Set())
+
+    const heroRef = useRef<HTMLDivElement>(null)
+    const [heroHeight, setHeroHeight] = useState(0)
+
+    useEffect(() => {
+        if (heroRef.current) {
+            setHeroHeight(heroRef.current.offsetHeight)
+        }
+    }, [])
 
     const toggleMusicType = (type: string) => {
         const newSelected = new Set(selectedMusicTypes)
@@ -57,29 +64,37 @@ export default function MyMusic() {
         setSelectedTunings(newSelected)
     }
 
+    const resetFilters = () => {
+        setSelectedMusicTypes(new Set())
+        setSelectedInstrumentations(new Set())
+        setSelectedTunings(new Set())
+    }
+
     const getCategoryEntries = (): MusicEntry[] => {
-        let entries = selectedCategory === "View All"
-            ? allEntries
-            : allEntries.filter((entry) => entry.category === selectedCategory)
+        let entries =
+            selectedCategory === "View All" ? allEntries : allEntries.filter((entry) => entry.category === selectedCategory)
 
-        // Filter by selected music types
         if (selectedMusicTypes.size > 0) {
-            entries = entries.filter(entry =>
-                entry.typeOfMusic.split(", ").some(type => selectedMusicTypes.has(type))
+            entries = entries.filter(
+                (entry) =>
+                    selectedMusicTypes.size ===
+                    entry.typeOfMusic.split(", ").filter((type) => selectedMusicTypes.has(type)).length,
             )
         }
 
-        // Filter by selected instrumentations
         if (selectedInstrumentations.size > 0) {
-            entries = entries.filter(entry =>
-                entry.instrumentationResources.split(", ").some(inst => selectedInstrumentations.has(inst))
+            entries = entries.filter(
+                (entry) =>
+                    selectedInstrumentations.size ===
+                    entry.instrumentationResources.split(", ").filter((inst) => selectedInstrumentations.has(inst)).length,
             )
         }
 
-        // Filter by selected tunings
         if (selectedTunings.size > 0) {
-            entries = entries.filter(entry =>
-                entry.tuningSystems.split(", ").some(tuning => selectedTunings.has(tuning))
+            entries = entries.filter(
+                (entry) =>
+                    selectedTunings.size ===
+                    entry.tuningSystems.split(", ").filter((tuning) => selectedTunings.has(tuning)).length,
             )
         }
 
@@ -89,12 +104,14 @@ export default function MyMusic() {
     return (
         <div>
             <div
-                className="h-[60vh] bg-cover bg-center flex justify-center items-center text-center"
+                ref={heroRef}
+                className="h-[60vh] bg-cover bg-center bg-fixed flex justify-center items-center text-center fixed inset-x-0 top-0 z-10"
                 style={{ backgroundImage: "url(/hero.png)" }}
             >
-                <h1 className="text-4xl font-bold">My Music</h1>
+                <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                <h1 className="text-4xl font-bold text-white relative z-20">My Music</h1>
             </div>
-            <section className="min-h-screen bg-black px-6 md:px-16 py-12">
+            <section className="relative z-20 bg-black px-6 md:px-16 py-12" style={{ marginTop: `${heroHeight}px` }}>
                 {/* Categories */}
                 <div className="border-b border-gray-700 pb-6">
                     <h2 className="text-2xl font-semibold mb-4">Categories</h2>
@@ -114,90 +131,120 @@ export default function MyMusic() {
 
                 {/* Filters */}
                 <div className="mt-8 pb-6 border-b border-gray-700">
-                    <h2 className="text-2xl font-semibold mb-4">Filters</h2>
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-2xl font-semibold">Filters</h2>
+                        <button
+                            onClick={resetFilters}
+                            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                        >
+                            Reset Filters
+                        </button>
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                         {/* Music Type Filter */}
-                        <div className="space-y-2">
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setMusicTypeDropdownOpen(true)}
+                            onMouseLeave={() => setMusicTypeDropdownOpen(false)}
+                        >
                             <button
-                                className="w-full py-2 px-4 bg-gray-800 text-white rounded flex items-center justify-between"
-                                onClick={() => setMusicTypeDropdownOpen(!musicTypeDropdownOpen)}
+                                className={`w-full py-2 px-4 bg-gray-800 text-white rounded-t flex items-center justify-between ${musicTypeDropdownOpen ? "rounded-b-none" : "rounded-b"
+                                    }`}
                             >
                                 <span>Type of Music ({selectedMusicTypes.size})</span>
                                 <ArrowDown size={16} />
                             </button>
                             {musicTypeDropdownOpen && (
-                                <div className="mt-2 p-4 bg-gray-800 border border-gray-700 rounded max-h-60 overflow-y-auto">
-                                    {musicTypes.map((type) => (
-                                        <label key={type} className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer">
-                                            <Checkbox
-                                                checked={selectedMusicTypes.has(type)}
-                                                onCheckedChange={() => toggleMusicType(type)}
-                                            />
-                                            <span>{type}</span>
-                                        </label>
-                                    ))}
+                                <div className="absolute left-0 right-0 top-full bg-gray-800 border-t-0 border border-gray-700 rounded-b max-h-60 overflow-y-auto z-30">
+                                    <div className="p-4">
+                                        {musicTypes.map((type) => (
+                                            <label
+                                                key={type}
+                                                className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer"
+                                            >
+                                                <Checkbox
+                                                    checked={selectedMusicTypes.has(type)}
+                                                    onCheckedChange={() => toggleMusicType(type)}
+                                                />
+                                                <span>{type}</span>
+                                            </label>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
 
                         {/* Instrumentation Filter */}
-                        <div className="space-y-2">
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setInstrumentationDropdownOpen(true)}
+                            onMouseLeave={() => setInstrumentationDropdownOpen(false)}
+                        >
                             <button
-                                className="w-full py-2 px-4 bg-gray-800 text-white rounded flex items-center justify-between"
-                                onClick={() => setInstrumentationDropdownOpen(!instrumentationDropdownOpen)}
+                                className={`w-full py-2 px-4 bg-gray-800 text-white rounded-t flex items-center justify-between ${instrumentationDropdownOpen ? "rounded-b-none" : "rounded-b"
+                                    }`}
                             >
                                 <span>Instrumentation ({selectedInstrumentations.size})</span>
                                 <ArrowDown size={16} />
                             </button>
                             {instrumentationDropdownOpen && (
-                                <div className="mt-2 p-4 bg-gray-800 border border-gray-700 rounded max-h-60 overflow-y-auto">
-                                    {(Object.entries(instrumentationAndResources) as [InstrumentationCategory, string[]][]).map(
-                                        ([category, items]) => (
-                                            <div key={category}>
-                                                <h3 className="text-sm font-semibold text-gray-400 mt-2 mb-1">{category}</h3>
-                                                {items.map((item) => (
-                                                    <label key={item} className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer">
-                                                        <Checkbox
-                                                            checked={selectedInstrumentations.has(item)}
-                                                            onCheckedChange={() => toggleInstrumentation(item)}
-                                                        />
-                                                        <span>{item}</span>
-                                                    </label>
-                                                ))}
-                                            </div>
-                                        )
-                                    )}
+                                <div className="absolute left-0 right-0 top-full bg-gray-800 border-t-0 border border-gray-700 rounded-b max-h-60 overflow-y-auto z-30">
+                                    <div className="p-4">
+                                        {(Object.entries(instrumentationAndResources) as [InstrumentationCategory, string[]][]).map(
+                                            ([category, items]) => (
+                                                <div key={category}>
+                                                    <h3 className="text-sm font-semibold text-gray-400 mt-2 mb-1">{category}</h3>
+                                                    {items.map((item) => (
+                                                        <label
+                                                            key={item}
+                                                            className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer"
+                                                        >
+                                                            <Checkbox
+                                                                checked={selectedInstrumentations.has(item)}
+                                                                onCheckedChange={() => toggleInstrumentation(item)}
+                                                            />
+                                                            <span>{item}</span>
+                                                        </label>
+                                                    ))}
+                                                </div>
+                                            ),
+                                        )}
+                                    </div>
                                 </div>
                             )}
                         </div>
 
                         {/* Tuning Systems Filter */}
-                        <div className="space-y-2">
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setTuningDropdownOpen(true)}
+                            onMouseLeave={() => setTuningDropdownOpen(false)}
+                        >
                             <button
-                                className="w-full py-2 px-4 bg-gray-800 text-white rounded flex items-center justify-between"
-                                onClick={() => setTuningDropdownOpen(!tuningDropdownOpen)}
+                                className={`w-full py-2 px-4 bg-gray-800 text-white rounded-t flex items-center justify-between ${tuningDropdownOpen ? "rounded-b-none" : "rounded-b"
+                                    }`}
                             >
                                 <span>Tuning Systems ({selectedTunings.size})</span>
                                 <ArrowDown size={16} />
                             </button>
                             {tuningDropdownOpen && (
-                                <div className="mt-2 p-4 bg-gray-800 border border-gray-700 rounded max-h-60 overflow-y-auto">
-                                    {(Object.entries(tuningSystems) as [TuningSystemCategory, string[]][]).map(
-                                        ([category, items]) => (
+                                <div className="absolute left-0 right-0 top-full bg-gray-800 border-t-0 border border-gray-700 rounded-b max-h-60 overflow-y-auto z-30">
+                                    <div className="p-4">
+                                        {(Object.entries(tuningSystems) as [TuningSystemCategory, string[]][]).map(([category, items]) => (
                                             <div key={category}>
                                                 <h3 className="text-sm font-semibold text-gray-400 mt-2 mb-1">{category}</h3>
                                                 {items.map((item) => (
-                                                    <label key={item} className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer">
-                                                        <Checkbox
-                                                            checked={selectedTunings.has(item)}
-                                                            onCheckedChange={() => toggleTuning(item)}
-                                                        />
+                                                    <label
+                                                        key={item}
+                                                        className="flex items-center space-x-2 py-1 hover:bg-gray-700 px-2 rounded cursor-pointer"
+                                                    >
+                                                        <Checkbox checked={selectedTunings.has(item)} onCheckedChange={() => toggleTuning(item)} />
                                                         <span>{item}</span>
                                                     </label>
                                                 ))}
                                             </div>
-                                        )
-                                    )}
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -208,7 +255,7 @@ export default function MyMusic() {
                 <div className="mt-12 space-y-12">
                     {getCategoryEntries().map((entry, index) => (
                         <div key={index} className="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-start gap-8">
-                            <div className="flex-1">
+                            <div className={`flex-1 ${entry.videoLinks && entry.videoLinks.length > 1 ? "md:sticky md:top-4" : ""}`}>
                                 <h2 className="text-2xl font-semibold mt-2">{entry.title}</h2>
                                 <p className="text-gray-400 mt-2">{entry.year}</p>
                                 <p className="text-gray-400 mt-2">{entry.instrumentation}</p>
@@ -268,3 +315,4 @@ export default function MyMusic() {
         </div>
     )
 }
+

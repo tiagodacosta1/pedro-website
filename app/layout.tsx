@@ -26,10 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.className}  antialiased bg-[#050807]`}>
         <div className='fixed top-0 left-0 right-0 z-50'>
-          <Header />
+          {/* <Header /> */}
         </div>
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
